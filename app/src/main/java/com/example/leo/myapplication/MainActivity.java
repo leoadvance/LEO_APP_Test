@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 		Log.d("LEO", "APP Start");
 
-		EditText  EditText_In = (EditText) findViewById(R.id.EditText_In);
+		final EditText  EditText_In = (EditText) findViewById(R.id.EditText_In);
 
 		EditText_In.addTextChangedListener(EditText_In_Watcher);
 
@@ -45,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
 			public void onClick(View v) {
 				Toast.makeText(MainActivity.this, "You Press Button Send", Toast.LENGTH_SHORT).show();
 				Log.d("LEO", "You Press Button Send");
+
+				Log.d("LEO", "当前文本框内容是 <" + EditText_In.getText().toString() + ">");
+
+				Toast.makeText(MainActivity.this, "当前文本框内容是 <" + EditText_In.getText().toString() + ">", Toast.LENGTH_SHORT).show();
+
 
 			}
 		});
