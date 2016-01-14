@@ -1,11 +1,13 @@
 package com.example.leo.myapplication;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -14,12 +16,14 @@ import android.widget.Toast;
 
 import java.util.Formatter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);  // 要求不显示标题
+
+		// 要求不显示标题
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 		Log.d("LEO", "APP Start");
 
@@ -56,6 +60,37 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu){
+
+		Log.d("LEO", "创建Menu");
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item){
+
+		switch(item.getItemId()) {
+
+			case R.id.add_item:
+				Toast.makeText(this, "You clicked ADD", Toast.LENGTH_SHORT).show();
+				break;
+
+			case R.id.remove_item:
+				Toast.makeText(this, "You clicked Remove", Toast.LENGTH_SHORT).show();
+				break;
+			default:
+
+				break;
+
+		}
+
+		return true;
 
 	}
 
