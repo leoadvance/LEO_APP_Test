@@ -1,6 +1,7 @@
 package com.example.leo.myapplication;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -57,7 +58,20 @@ public class MainActivity extends Activity {
 
 			}
 		});
+		Button Button_SecondPage = (Button)findViewById(R.id.buttonSecondPage);
 
+		Button_SecondPage.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(MainActivity.this, "You Press Button SecondPage", Toast.LENGTH_SHORT).show();
+				Log.d("LEO", "You Press Button SecondPage");
+
+				Intent intent = new Intent(MainActivity.this, SecondPage.class);
+				startActivity(intent);
+
+
+			}
+		});
 
 
 
@@ -67,6 +81,8 @@ public class MainActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu){
 
 		Log.d("LEO", "创建Menu");
+		menu.add(Menu.NONE, Menu.FIRST + 1, 5, "删除").setIcon(
+				android.R.drawable.ic_menu_delete);
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 
