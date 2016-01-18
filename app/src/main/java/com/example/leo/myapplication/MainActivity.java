@@ -1,6 +1,7 @@
 package com.example.leo.myapplication;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import android.widget.Toast;
 import java.util.Formatter;
 
 public class MainActivity extends Activity {
-
+	EditText EditText_In;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,55 +29,57 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		Log.d("LEO", "APP Start");
 
-		final EditText  EditText_In = (EditText) findViewById(R.id.EditText_In);
+		EditText_In = (EditText) findViewById(R.id.EditText_In);
 
 		EditText_In.addTextChangedListener(EditText_In_Watcher);
 
-		Button Button_Press = (Button)findViewById(R.id.Button_Press);
-
-		Button_Press.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(MainActivity.this, "You Press Button Press", Toast.LENGTH_SHORT).show();
-				Log.d("LEO", "You Press Button Press");
-
-			}
-		});
-
-		Button Button_Send  = (Button)findViewById(R.id.Button_Send);
-
-		Button_Send.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(MainActivity.this, "You Press Button Send", Toast.LENGTH_SHORT).show();
-				Log.d("LEO", "You Press Button Send");
-
-				Log.d("LEO", "当前文本框内容是 <" + EditText_In.getText().toString() + ">");
-
-				Toast.makeText(MainActivity.this, "当前文本框内容是 <" + EditText_In.getText().toString() + ">", Toast.LENGTH_SHORT).show();
-
-
-			}
-		});
+		Button Button_Press 	 = (Button)findViewById(R.id.Button_Press);
+		Button Button_Send  	 = (Button)findViewById(R.id.Button_Send);
 		Button Button_SecondPage = (Button)findViewById(R.id.buttonSecondPage);
-
-		Button_SecondPage.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(MainActivity.this, "You Press Button SecondPage", Toast.LENGTH_SHORT).show();
-				Log.d("LEO", "You Press Button SecondPage");
-
-				Intent intent = new Intent(MainActivity.this, SecondPage.class);
-				startActivity(intent);
+		Button_Press.setOnClickListener(new ButtonClick());
+		Button_Send.setOnClickListener(new ButtonClick());
+		Button_SecondPage.setOnClickListener(new ButtonClick());
 
 
-			}
-		});
 
 
 
 	}
 
+	class ButtonClick implements View.OnClickListener {
+		public void onClick(View v){
+			switch(v.getId())
+			{
+				case R.id.Button_Press:{
+					Toast.makeText(MainActivity.this, "You Press Button Press", Toast.LENGTH_SHORT).show();
+					Log.d("LEO", "You Press Button Press");
+				}break;
+
+				case R.id.Button_Send:{
+					Toast.makeText(MainActivity.this, "You Press Button Send", Toast.LENGTH_SHORT).show();
+					Log.d("LEO", "You Press Button Send");
+
+					Log.d("LEO", "当前文本框内容是 <" + EditText_In.getText().toString() + ">");
+
+					Toast.makeText(MainActivity.this, "当前文本框内容是 <" + EditText_In.getText().toString() + ">", Toast.LENGTH_SHORT).show();
+
+
+				}break;
+
+				case R.id.buttonSecondPage:{
+					Toast.makeText(MainActivity.this, "You Press Button SecondPage", Toast.LENGTH_SHORT).show();
+					Log.d("LEO", "You Press Button SecondPage");
+
+					Intent intent = new Intent(MainActivity.this, SecondPage.class);
+					startActivity(intent);
+				}break;
+
+				default:
+					break;
+			}
+		}
+
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu){
 
