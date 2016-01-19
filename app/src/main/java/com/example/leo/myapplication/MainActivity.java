@@ -3,6 +3,7 @@ package com.example.leo.myapplication;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -36,9 +37,11 @@ public class MainActivity extends Activity {
 		Button Button_Press 	 = (Button)findViewById(R.id.Button_Press);
 		Button Button_Send  	 = (Button)findViewById(R.id.Button_Send);
 		Button Button_SecondPage = (Button)findViewById(R.id.buttonSecondPage);
+		Button ButtonBaidu 		 = (Button)findViewById(R.id.buttonBaidu);
 		Button_Press.setOnClickListener(new ButtonClick());
 		Button_Send.setOnClickListener(new ButtonClick());
 		Button_SecondPage.setOnClickListener(new ButtonClick());
+		ButtonBaidu.setOnClickListener(new ButtonClick());		// 声明按键监听程序
 
 
 
@@ -71,7 +74,25 @@ public class MainActivity extends Activity {
 					Log.d("LEO", "You Press Button SecondPage");
 
 					Intent intent = new Intent(MainActivity.this, SecondPage.class);
-					startActivity(intent);
+					startActivityForResult(intent, 1);
+
+				}break;
+
+				case R.id.buttonBaidu:{
+					Toast.makeText(MainActivity.this, "You Press Button Baidu", Toast.LENGTH_SHORT).show();
+					Log.d("LEO", "You Press Button Baidu");
+
+					// 声明新Intent
+					Intent IntentBaidu = new Intent(Intent.ACTION_VIEW);
+
+					// uri解析网址
+					IntentBaidu.setData(Uri.parse("http://www.baidu.com"));
+
+					// 执行
+					startActivity(IntentBaidu);
+
+					finish();
+
 				}break;
 
 				default:
@@ -139,5 +160,12 @@ public class MainActivity extends Activity {
 
 		}
 	};
+
+
+//	// 重写Activity结束接收方法
+//	@Override
+//	public void onActivityResult(){
+//
+//	}
 
 }
