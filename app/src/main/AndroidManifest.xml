@@ -19,6 +19,11 @@
         <activity android:name=".SecondPage">                   // 注册activity
 
         </activity>
+
+        <activity android:name=".DialogPage"
+                  android:theme="@android:style/Animation.Dialog">                   // 注册activity
+
+        </activity>
     </application>
 
 </manifest>

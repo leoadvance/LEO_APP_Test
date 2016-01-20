@@ -22,6 +22,8 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	EditText EditText_In;
 	final int MaintoSewcond = 0;
+    final int MaintoDialog  = 0;
+    final String TAG_ACTIVITY = "ActivityTag";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,6 +32,7 @@ public class MainActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 		Log.d("LEO", "APP Start");
+        Log.d(TAG_ACTIVITY, "onCreate");
 
 		EditText_In = (EditText) findViewById(R.id.EditText_In);
 
@@ -39,10 +42,12 @@ public class MainActivity extends Activity {
 		Button Button_Send  	 = (Button)findViewById(R.id.Button_Send);
 		Button Button_SecondPage = (Button)findViewById(R.id.buttonSecondPage);
 		Button ButtonBaidu 		 = (Button)findViewById(R.id.buttonBaidu);
+        Button ButtonDialog      = (Button)findViewById(R.id.buttonNextDialog);
 		Button_Press.setOnClickListener(new ButtonClick());
 		Button_Send.setOnClickListener(new ButtonClick());
 		Button_SecondPage.setOnClickListener(new ButtonClick());
 		ButtonBaidu.setOnClickListener(new ButtonClick());		// 声明按键监听程序
+        ButtonDialog.setOnClickListener(new ButtonClick());		// 声明按键监听程序
 
 
 
@@ -79,6 +84,16 @@ public class MainActivity extends Activity {
 					startActivityForResult(intent, MaintoSewcond);
 
 				}break;
+
+                case R.id.buttonNextDialog:{
+                    Toast.makeText(MainActivity.this, "You Press Button NextDialog", Toast.LENGTH_SHORT).show();
+                    Log.d("LEO", "You Press Button NextDialog");
+
+                    Intent intent = new Intent(MainActivity.this, DialogPage.class);
+                    intent.putExtra("MaintoDialogPage", "we travel from Main to DialogPage");
+                    startActivityForResult(intent, MaintoDialog);
+
+                }break;
 
 				case R.id.buttonBaidu:{
 					Toast.makeText(MainActivity.this, "You Press Button Baidu", Toast.LENGTH_SHORT).show();
@@ -140,7 +155,7 @@ public class MainActivity extends Activity {
 
 		@Override
 		public void onTextChanged(CharSequence s, int start, int before, int count) {
-			// TODO Auto-generated method stub
+
 
 			Log.d("LEO", "当前字符 = <" + s + "> 开始位置 = " + start + " 之前位置 = " + before + " 本次输入长度 = " + count);
 
@@ -150,14 +165,14 @@ public class MainActivity extends Activity {
 		@Override
 		public void beforeTextChanged(CharSequence s, int start, int count,
 		                              int after) {
-			// TODO Auto-generated method stub
+
 			Log.d("LEO", "文本变化之前");
 
 		}
 
 		@Override
 		public void afterTextChanged(Editable s) {
-			// TODO Auto-generated method stub
+
 			Log.d("LEO", "文本变化之后");
 
 		}
@@ -175,14 +190,12 @@ public class MainActivity extends Activity {
 
                 String StringBack = data.getStringExtra("SecondBacktoMain");
 
-//                if (resultCode == RESULT_OK)
-//                {
-//                    StringBack += "RESULT OK";
-//                }
-//                else
-//                {
-//                    StringBack += "RESULT FAILED";
-//                }
+                if (resultCode == RESULT_OK) {
+                    StringBack += " RESULT OK";
+                }
+                else {
+                    StringBack += " RESULT FAILED";
+                }
                 Toast.makeText(MainActivity.this, StringBack, Toast.LENGTH_SHORT).show();
                 Log.d("LEO", StringBack);
 
@@ -193,5 +206,47 @@ public class MainActivity extends Activity {
 
 		}
 	}
+
+    // 重写onDestroy方法
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.d(TAG_ACTIVITY, "onDestroy");
+    }
+
+    // 重写onStart方法
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.d(TAG_ACTIVITY, "onStart");
+    }
+
+    // 重写onStop方法
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Log.d(TAG_ACTIVITY, "onStop");
+    }
+
+    // 重写onResume方法
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.d(TAG_ACTIVITY, "onResume");
+    }
+
+    // 重写onPause方法
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Log.d(TAG_ACTIVITY, "onPause");
+    }
+
+    // 重写onRestart方法
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        Log.d(TAG_ACTIVITY, "onRestart");
+    }
 
 }
