@@ -1,10 +1,10 @@
 package com.example.leo.myapplication;
 
 import android.app.Activity;
-import android.content.DialogInterface;
+
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,10 +17,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Formatter;
+
 
 public class MainActivity extends Activity {
 	EditText EditText_In;
+	final int MaintoSewcond = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -74,7 +75,8 @@ public class MainActivity extends Activity {
 					Log.d("LEO", "You Press Button SecondPage");
 
 					Intent intent = new Intent(MainActivity.this, SecondPage.class);
-					startActivityForResult(intent, 1);
+					intent.putExtra("MaintoSecondpage", "we travel from Main to Second");
+					startActivityForResult(intent, MaintoSewcond);
 
 				}break;
 
@@ -162,10 +164,34 @@ public class MainActivity extends Activity {
 	};
 
 
-//	// 重写Activity结束接收方法
-//	@Override
-//	public void onActivityResult(){
-//
-//	}
+	// 重写Activity结束接收方法
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data){
+
+        // 判断返回值
+		switch(requestCode){
+
+            case MaintoSewcond:{
+
+                String StringBack = data.getStringExtra("SecondBacktoMain");
+
+//                if (resultCode == RESULT_OK)
+//                {
+//                    StringBack += "RESULT OK";
+//                }
+//                else
+//                {
+//                    StringBack += "RESULT FAILED";
+//                }
+                Toast.makeText(MainActivity.this, StringBack, Toast.LENGTH_SHORT).show();
+                Log.d("LEO", StringBack);
+
+            }break;
+
+            default:
+                break;
+
+		}
+	}
 
 }

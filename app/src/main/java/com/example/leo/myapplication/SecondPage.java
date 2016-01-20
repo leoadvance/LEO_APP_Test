@@ -27,6 +27,13 @@ public class SecondPage extends Activity {
         // 用布局文件进行布局
         setContentView(R.layout.secondpage);
 
+
+        // 获取上层Activity传递的数值
+        Intent IntentSecond = getIntent();
+        String string = IntentSecond.getStringExtra("MaintoSecondpage");
+        Log.d("LEO", string);
+
+
         // 声明Button监听程序
         ImageButton ButtonBackMain = (ImageButton)findViewById(R.id.imageButtonBackMain);
         ButtonBackMain.setOnClickListener(new ButtonClick());
@@ -45,7 +52,7 @@ public class SecondPage extends Activity {
                     Toast.makeText(SecondPage.this, "You Press Button BackMain", Toast.LENGTH_SHORT).show();
                     Log.d("LEO", "You Press Button BackMain");
 
-                    finish();
+                    SecondPageBack();
 
 
                 }break;
@@ -58,6 +65,19 @@ public class SecondPage extends Activity {
 
     }
 
+    public void SecondPageBack(){
+
+        // 声明新的Intent
+        Intent intent = new Intent();
+
+        intent.putExtra("SecondBacktoMain", "Back to Main Page");
+
+        // 发送返回值
+        setResult(RESULT_OK, intent);
+
+        finish();
+    }
+
     // 重写后退按键方法
     @Override
     public void onBackPressed(){
@@ -65,15 +85,8 @@ public class SecondPage extends Activity {
         Toast.makeText(SecondPage.this, "You Press Button BackPressed", Toast.LENGTH_SHORT).show();
         Log.d("LEO", "You Press Button BackPressed");
 
-        // 声明新的Intent
-        Intent intent = new Intent();
+        SecondPageBack();
 
-        intent.putExtra("data_return", "Back to Main Page");
-
-        // 发送返回值
-        setResult(RESULT_OK, intent);
-
-        finish();
 
     }
 }
