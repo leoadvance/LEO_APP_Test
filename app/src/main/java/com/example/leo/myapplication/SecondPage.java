@@ -128,6 +128,9 @@ public class SecondPage extends Activity {
         // Dialog标题 内容
         BuliderMain.setTitle("警告!");
         BuliderMain.setMessage("这不是在开玩笑!");
+
+        // 不可被其他操作打断
+        BuliderMain.setCancelable(false);
         BuliderMain.setPositiveButton("是", DialogListener);
         BuliderMain.setNegativeButton("否", DialogListener);
         BuliderMain.setNeutralButton("中立", DialogListener);
