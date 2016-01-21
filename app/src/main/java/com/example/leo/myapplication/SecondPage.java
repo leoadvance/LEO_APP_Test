@@ -41,8 +41,10 @@ public class SecondPage extends Activity {
         // 声明Button监听程序
         ImageButton ButtonBackMain = (ImageButton)findViewById(R.id.imageButtonBackMain);
         Button ButtonDialog        = (Button)findViewById(R.id.buttonDialog);
+        Button ButtonDialogActivity = (Button)findViewById(R.id.buttonDialogActivity);
         ButtonBackMain.setOnClickListener(new ButtonClick());
         ButtonDialog.setOnClickListener(new ButtonClick());		// 声明按键监听程序
+        ButtonDialogActivity.setOnClickListener(new ButtonClick());		// 声明按键监听程序
 
 
     }
@@ -71,6 +73,17 @@ public class SecondPage extends Activity {
 
 
                 }break;
+
+                case R.id.buttonDialogActivity:{
+                    Toast.makeText(SecondPage.this, "You Press Button Dialog Activity", Toast.LENGTH_SHORT).show();
+                    Log.d("LEO", "You Press Button Dialog Activity");
+
+                    Intent IntentDialog = new Intent(SecondPage.this, DialogPage.class);
+                    startActivity(IntentDialog);
+
+
+                }break;
+
                 default:
                     break;
             }

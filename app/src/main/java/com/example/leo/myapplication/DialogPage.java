@@ -18,5 +18,8 @@ public class DialogPage  extends Activity{
         //  屏蔽小标题
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         Log.d("LEO", "进入SecondPage");
+
+        // 用布局文件进行布局
+        setContentView(R.layout.dialogpage);
     }
 }
