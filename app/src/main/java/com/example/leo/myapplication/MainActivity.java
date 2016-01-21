@@ -2,6 +2,7 @@ package com.example.leo.myapplication;
 
 import android.app.Activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 
@@ -24,6 +25,7 @@ public class MainActivity extends Activity {
 	final int MaintoSewcond = 0;
     final int MaintoDialog  = 0;
     final String TAG_ACTIVITY = "ActivityTag";
+    final String CurrentPage  = "MainPage ";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,7 +34,7 @@ public class MainActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 		Log.d("LEO", "APP Start");
-        Log.d(TAG_ACTIVITY, "onCreate");
+        Log.d(TAG_ACTIVITY, CurrentPage + "onCreate");
 
 		EditText_In = (EditText) findViewById(R.id.EditText_In);
 
@@ -42,12 +44,12 @@ public class MainActivity extends Activity {
 		Button Button_Send  	 = (Button)findViewById(R.id.Button_Send);
 		Button Button_SecondPage = (Button)findViewById(R.id.buttonSecondPage);
 		Button ButtonBaidu 		 = (Button)findViewById(R.id.buttonBaidu);
-        Button ButtonDialog      = (Button)findViewById(R.id.buttonNextDialog);
+
 		Button_Press.setOnClickListener(new ButtonClick());
 		Button_Send.setOnClickListener(new ButtonClick());
 		Button_SecondPage.setOnClickListener(new ButtonClick());
 		ButtonBaidu.setOnClickListener(new ButtonClick());		// 声明按键监听程序
-        ButtonDialog.setOnClickListener(new ButtonClick());		// 声明按键监听程序
+
 
 
 
@@ -85,15 +87,6 @@ public class MainActivity extends Activity {
 
 				}break;
 
-                case R.id.buttonNextDialog:{
-                    Toast.makeText(MainActivity.this, "You Press Button NextDialog", Toast.LENGTH_SHORT).show();
-                    Log.d("LEO", "You Press Button NextDialog");
-
-                    Intent intent = new Intent(MainActivity.this, DialogPage.class);
-                    intent.putExtra("MaintoDialogPage", "we travel from Main to DialogPage");
-                    startActivityForResult(intent, MaintoDialog);
-
-                }break;
 
 				case R.id.buttonBaidu:{
 					Toast.makeText(MainActivity.this, "You Press Button Baidu", Toast.LENGTH_SHORT).show();
@@ -211,42 +204,46 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        Log.d(TAG_ACTIVITY, "onDestroy");
+        Log.d(TAG_ACTIVITY, CurrentPage + "onDestroy");
     }
 
     // 重写onStart方法
     @Override
     protected void onStart(){
         super.onStart();
-        Log.d(TAG_ACTIVITY, "onStart");
+        Log.d(TAG_ACTIVITY, CurrentPage + "onStart");
     }
 
     // 重写onStop方法
     @Override
     protected void onStop(){
         super.onStop();
-        Log.d(TAG_ACTIVITY, "onStop");
+        Log.d(TAG_ACTIVITY, CurrentPage + "onStop");
     }
 
     // 重写onResume方法
     @Override
     protected void onResume(){
         super.onResume();
-        Log.d(TAG_ACTIVITY, "onResume");
+        Log.d(TAG_ACTIVITY, CurrentPage + "onResume");
     }
 
     // 重写onPause方法
     @Override
     protected void onPause(){
         super.onPause();
-        Log.d(TAG_ACTIVITY, "onPause");
+        Log.d(TAG_ACTIVITY, CurrentPage + "onPause");
     }
 
     // 重写onRestart方法
     @Override
     protected void onRestart(){
         super.onRestart();
-        Log.d(TAG_ACTIVITY, "onRestart");
+        Log.d(TAG_ACTIVITY, CurrentPage + "onRestart");
     }
+
+
+
+
 
 }
