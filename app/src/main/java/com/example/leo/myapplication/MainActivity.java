@@ -101,7 +101,6 @@ public class MainActivity extends Activity {
 					// 执行
 					startActivity(IntentBaidu);
 
-					finish();
 
 				}break;
 
