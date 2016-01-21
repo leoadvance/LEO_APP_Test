@@ -21,4 +21,12 @@
         android:id="@+id/buttonDialog"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DialogActivity"
+        android:id="@+id/buttonDialogActivity"
+        android:layout_below="@+id/buttonDialog"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
