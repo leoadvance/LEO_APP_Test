@@ -21,7 +21,7 @@
         </activity>
 
         <activity android:name=".DialogPage"
-                  android:theme="@android:style/Animation.Dialog">                   // 注册activity
+                  android:theme="@android:style/Theme.Dialog">                   // 注册activity
 
         </activity>
     </application>
