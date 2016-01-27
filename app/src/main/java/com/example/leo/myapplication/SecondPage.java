@@ -14,7 +14,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 
-public class SecondPage extends Activity {
+public class SecondPage extends BaseActivity {
     final String TAG_ACTIVITY = "ActivityTag";
     final String CurrentPage  = "SecondPage ";
     @Override
@@ -178,45 +178,4 @@ public class SecondPage extends Activity {
 
     }
 
-    // 重写onDestroy方法
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        Log.d(TAG_ACTIVITY, CurrentPage + "onDestroy");
-    }
-
-    // 重写onStart方法
-    @Override
-    protected void onStart(){
-        super.onStart();
-        Log.d(TAG_ACTIVITY, CurrentPage + "onStart");
-    }
-
-    // 重写onStop方法
-    @Override
-    protected void onStop(){
-        super.onStop();
-        Log.d(TAG_ACTIVITY, CurrentPage + "onStop");
-    }
-
-    // 重写onResume方法
-    @Override
-    protected void onResume(){
-        super.onResume();
-        Log.d(TAG_ACTIVITY, CurrentPage + "onResume");
-    }
-
-    // 重写onPause方法
-    @Override
-    protected void onPause(){
-        super.onPause();
-        Log.d(TAG_ACTIVITY, CurrentPage + "onPause");
-    }
-
-    // 重写onRestart方法
-    @Override
-    protected void onRestart(){
-        super.onRestart();
-        Log.d(TAG_ACTIVITY, CurrentPage + "onRestart");
-    }
 }

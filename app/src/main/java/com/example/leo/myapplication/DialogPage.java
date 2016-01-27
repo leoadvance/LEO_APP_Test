@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 
-public class DialogPage  extends Activity{
+public class DialogPage  extends BaseActivity{
 
     // 重写onCreate
     @Override
