@@ -3,6 +3,7 @@ package com.example.leo.myapplication;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -176,6 +177,13 @@ public class SecondPage extends BaseActivity {
         SecondPageBack();
 
 
+    }
+
+    // 启动Activity接口
+    public static void actionStart(Context context, String Data){
+//        Intent intent = new Intent(context, SecondPage.this);
+//        intent.putExtra("Param", Data);
+//        context.startActivityForResult
     }
 
 }
